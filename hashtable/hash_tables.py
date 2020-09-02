@@ -55,6 +55,8 @@ def UTF8_hash(my_str):
 
 print(UTF8_hash('sad'))
 print(UTF8_hash('was'))
+
+print(UTF8_hash('supercalifragilisticexpialidocious'))
 # ...but we will still have collisions 
 
 # A hash function: takes str, gives back num
@@ -67,3 +69,8 @@ print(UTF8_hash('was'))
 # Hash function + array! 
 ## How to map the output of our hash function to an index in an array? 
 
+my_arr2 = [None] * 20
+
+idx = UTF8_hash('supercalifragilisticexpialidocious') # 3643
+
+my_arr2[idx] = 'Mary Poppins'
