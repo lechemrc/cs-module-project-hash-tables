@@ -96,5 +96,13 @@ my_arr2[idx] = 'Mary Poppins'
 print(my_arr2)
 
 # 'get' 
-# 'supercalifragilisticexpialidocious'
-print(my_arr2[3])
+our_hash = UTF8_hash('supercalifragilisticexpialidocious')
+idx = our_hash % len(my_arr2)
+
+# print(my_arr2[3])
+val = my_arr2[idx]
+print(val)
+
+## Key : Value pair
+# 'supercalifragilisticexpialidocious' is the key
+# 'Mary Poppins' is the value
