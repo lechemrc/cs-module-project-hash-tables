@@ -69,8 +69,32 @@ print(UTF8_hash('supercalifragilisticexpialidocious'))
 # Hash function + array! 
 ## How to map the output of our hash function to an index in an array? 
 
+# Doesn't work
+# my_arr2 = [None] * 20
+# idx = UTF8_hash('supercalifragilisticexpialidocious') # 3643
+# my_arr2[idx] = 'Mary Poppins'
+
+# How do we turn result of has function into usable index?
+## Modulo (%, returns remainder) the hash with len(my_arr2)
+
+# 1 % 20 --> 1
+# 15 % 20 --> 15
+# 20 % 20 --> 0
+# 21 % 20 --> 1
+# 22 % 20 --> 2
+# 39 % 20 --> 19
+# 40 % 20 --> 0
+
+# Use modulo with hash to return a usable index
+## We can now combine hash function and array
+
+# 'put' into our array
 my_arr2 = [None] * 20
-
-idx = UTF8_hash('supercalifragilisticexpialidocious') # 3643
-
+my_hash = UTF8_hash('supercalifragilisticexpialidocious') # 3643
+idx = my_hash % len(my_arr2)
 my_arr2[idx] = 'Mary Poppins'
+print(my_arr2)
+
+# 'get' 
+# 'supercalifragilisticexpialidocious'
+print(my_arr2[3])
