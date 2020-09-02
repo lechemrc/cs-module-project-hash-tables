@@ -106,3 +106,59 @@ print(val)
 ## Key : Value pair
 # 'supercalifragilisticexpialidocious' is the key
 # 'Mary Poppins' is the value
+
+# Has table in programming language?
+# Dictionary (Python)
+# Object (JS)
+# Hash map
+# Map
+
+## Pseudocode for 'put'
+### 1. hash the key
+### 2. take the hash
+### 3. go to index and put in value
+
+## Pseudocode for 'get'
+### 1. hash the key
+### 2. tkae the hash and mod it with len of array
+### 3. go to index and get out the value
+
+# Time complexity? ^^
+## Same for get and put
+## Linear in length of string/key
+## Constant time in length of array
+
+## Collision
+key1 = 'dad'
+key2 = 'dad'
+
+hash1 = UTF8_hash(key1)
+idx1 = hash1 % len(my_arr2)
+my_arr2[idx1] = 'howdy'
+
+hash2 = UTF8_hash(key2)
+idx2 = hash2 % len(my_arr2)
+my_arr2[idx2] = 'whats up yall'
+
+# Get 
+get_hash = UTF8_hash(key1)
+idx3 = get_hash % len(my_arr2)
+print(my_arr2[idx3])
+
+## Even when we use our hash function with modulo, we get collisions... solve later
+
+# When used with hash tables, hashing functions should be FAST
+## Why? We want O(1), and a lot of lookups
+
+# Other uses of hash functions
+## passwords! e.g. bcryptjs
+## Encryption/decryption
+
+## password --> hashing function --> hashed_password
+## password --> hashing function --> hash == hashed_password?
+
+### Here hash function should be slow
+### 1234mypassword
+
+# SHA-256 has never had a collision
+## Can use the output (hash) as a fingerprint for your string
