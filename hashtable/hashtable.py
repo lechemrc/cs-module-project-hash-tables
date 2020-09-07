@@ -143,7 +143,11 @@ class HashTable:
 
         # Add the values to new table
         for idx in range(len(prev_table)):
-            
+            if prev_table[idx] is not None:
+                new_table.put(prev_table.key, prev_table.value)
+        
+        self.storage = new_table
+        return self.storage
 
 
 
