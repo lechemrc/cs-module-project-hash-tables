@@ -137,7 +137,13 @@ class HashTable:
         rehashes all key/value pairs.
         Implement this.
         """
-        # Your code here
+        prev_table = self.storage
+        new_table  = [None] * new_capacity
+        self.capacity = new_capacity
+
+        # Add the values to new table
+        for idx in range(len(prev_table)):
+            
 
 
 
