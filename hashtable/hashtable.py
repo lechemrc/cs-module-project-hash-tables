@@ -7,7 +7,6 @@ class HashTableEntry:
         self.value = value
         self.next = None
 
-
 # Hash table can't have fewer than this many slots
 MIN_CAPACITY = 8
 
@@ -99,9 +98,25 @@ class HashTable:
         idx = self.hash_index(key)
         # 3a. Check if there is a collision
         if self.storage[idx] != None:
-            print('WARNING! You are overwriting a value!')
+            # Check if the key is already in linked list
+            node = self.storage[idx] # This is the head of the linked list
+            while node is not None:
+                if node.key == key:
+                ## If so, update the value 
+                    node.value = value
+                    return
+                node = node.next
+
+                ## If not, add a node to the head of the linked list
+                old_head = self.storage[idx]
+                new_head = HashTableEntry(key, value)
+                new_head.next = old_head
+                self.storage[idx] = new_head
+                
         # 3b. Go to index and put in value
-        self.storage[idx] = value
+        else:
+            # Add the first node
+            self.storage[idx] = HashTableEntry(key, value)
 
 
     def delete(self, key):
@@ -125,10 +140,14 @@ class HashTable:
         # 1. Hash the key
         # 2. Take the hash and mod it with len of array
         idx = self.hash_index(key)
-        # 3. Go to index and get out value
-        value = self.storage[idx]
+        # 3. Go to index and get traverse our linked list
+        node = self.storage[idx]
+        while node is not None:
+            if node.key == key:
+                return node.value
+            node = node.next
 
-        return value
+        return None
 
 
     def resize(self, new_capacity):
@@ -137,17 +156,17 @@ class HashTable:
         rehashes all key/value pairs.
         Implement this.
         """
-        prev_table = self.storage
-        new_table  = [None] * new_capacity
+        prev_table = self.storage[:]
+        prev_capacity = self.capacity
         self.capacity = new_capacity
+        new_table  = [None] * self.capacity
+        
 
         # Add the values to new table
-        for idx in range(len(prev_table)):
+        for idx in range(prev_capacity):
             if prev_table[idx] is not None:
-                new_table.put(prev_table.key, prev_table.value)
-        
-        self.storage = new_table
-        return self.storage
+                entry = prev_table[idx]
+                new_table.put(entry.key, entry.value)
 
 
 
