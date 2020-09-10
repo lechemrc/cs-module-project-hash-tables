@@ -17,7 +17,7 @@
 ## Key: URL
 ## Value: web page data
 
-import requests
+# import requests
 import time
 
 cache = {}
