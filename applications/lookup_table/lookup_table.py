@@ -1,7 +1,7 @@
 import random
 import math
 
-lookup = {}
+cache = {}
 
 
 def slowfun_too_slow(x, y):
@@ -18,15 +18,15 @@ def slowfun(x, y):
     Rewrite slowfun_too_slow() in here so that the program produces the same
     output, but completes quickly instead of taking ages to run.
     """
-    if (x, y) in lookup:
-        return lookup[(x, y)]
+    if (x, y) in cache:
+        return cache[(x, y)]
 
     v = math.pow(x, y)
     v = math.factorial(v)
     v //= (x + y)
     v %= 982451653
 
-    lookup[(x, y)] = v
+    cache[(x, y)] = v
     return v
 
 
