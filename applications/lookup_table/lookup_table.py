@@ -3,7 +3,6 @@ import math
 
 cache = {}
 
-
 def slowfun_too_slow(x, y):
     v = math.pow(x, y)
     v = math.factorial(v)
@@ -11,7 +10,6 @@ def slowfun_too_slow(x, y):
     v %= 982451653
 
     return v
-
 
 def slowfun(x, y):
     """
