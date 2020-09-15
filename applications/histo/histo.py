@@ -1,7 +1,7 @@
 def histo(s):
     cache = {}
     drop_chars = [
-        '\"', '\'', ':', ';', ',', '.', '-', '+', '=', '/', 
+        '\"', ':', ';', ',', '.', '-', '+', '=', '/', 
         '\\', '|', '[', ']', '{', '}', '(', ')', '*', '^', '&'
         ]
 
@@ -15,5 +15,13 @@ def histo(s):
         else: 
             cache[word] = 1
 
-    return cache
+    sort_orders = sorted(cache.items(), key=lambda x: x[1], reverse=True)
 
+    for word in sort_orders:
+        print(word[0] + (' ' * (17 - len(word[0]))) + ('#' * int(word[1])))
+
+
+if __name__ == "__main__":
+    f = open('applications/histo/robin.txt', 'r')
+    content = f.read()
+    print(histo(content))
